@@ -1,0 +1,27 @@
+{
+    "/oasishoteles/api/rf": {
+        "target": "https://geoshglobal.com",
+        "secure": false,
+        "changeOrigin": true
+    },
+    "/api/rf": {
+        "target": "https://geoshglobal.com",
+        "secure": false,
+        "changeOrigin": true
+    },
+    "/ng2/json": {
+        "target": "https://geoshglobal.com",
+        "secure": false,
+        "changeOrigin": true
+    },
+    "/img": {
+        "target": "https://geoshglobal.com",
+        "secure": false,
+        "changeOrigin": true
+    },
+    "/formatos": {
+        "target": "https://geoshglobal.com",
+        "secure": false,
+        "changeOrigin": true
+    }
+}

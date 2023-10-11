@@ -6,16 +6,16 @@
   </mat-toolbar>
   
   <div class="product-container">
-    <mat-card class="product-card" *ngFor="let product of jsonData | keys">
-      <img mat-card-image [src]="jsonData[product].Foto" alt="Foto del producto">
-      <mat-card-title>{{jsonData[product].Modelo}}</mat-card-title>
-      <mat-card-subtitle>{{jsonData[product].Hits}} hits</mat-card-subtitle>
+    <mat-card class="product-card" *ngFor="let product of lapi.jsonData | keys">
+      <img mat-card-image [src]="lapi.jsonData[product].Foto" alt="Foto del producto">
+      <mat-card-title>{{lapi.jsonData[product].Modelo}}</mat-card-title>
+      <mat-card-subtitle>{{lapi.jsonData[product].Hits}} hits</mat-card-subtitle>
   
       <mat-card-content>
         <mat-form-field class="select-flavor">
             <mat-label>Sabor</mat-label>
             <mat-select>
-                <ng-container *ngFor="let flavor of jsonData[product].Sabor">
+                <ng-container *ngFor="let flavor of lapi.jsonData[product].Sabor">
                     <mat-option  [value]="flavor['Sabor']" *ngIf="flavor['Inventario'] > 0">
                       {{flavor['Sabor']}} ({{flavor['Inventario']}})
                     </mat-option>
@@ -26,9 +26,9 @@
       </mat-card-content>
   
       <mat-card-footer>
-        <span class="price">{{jsonData[product].PrecioBarco | currency:'MXN':'symbol':'1.2-2'}} / US{{jsonData[product].PrecioBarcoUSD | currency:'USD':'symbol':'1.2-2'}}</span>
+        <span class="price">{{lapi.jsonData[product].PrecioBarco | currency:'MXN':'symbol':'1.2-2'}} / US{{lapi.jsonData[product].PrecioBarcoUSD | currency:'USD':'symbol':'1.2-2'}}</span>
         <button mat-icon-button color="primary">
-        <!-- <button mat-icon-button (click)="buyProduct(jsonData[product].Producto)"> -->
+        <!-- <button mat-icon-button (click)="buyProduct(lapi.jsonData[product].Producto)"> -->
           <mat-icon>shopping_cart</mat-icon>
         </button>
       </mat-card-footer>

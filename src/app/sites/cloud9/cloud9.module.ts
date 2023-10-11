@@ -13,6 +13,9 @@ import { SharedModule } from 'src/app/shared/shared.module';
 import { MatButtonModule } from '@angular/material/button';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatSelectModule } from '@angular/material/select';
+import { MatDialogModule } from '@angular/material/dialog';
+import { PagosComponent } from './pagos/pagos.component';
+import { FlavorDialogComponent } from './modals/flavor-dialog/flavor-dialog.component';
 
 
 @NgModule({
@@ -20,11 +23,14 @@ import { MatSelectModule } from '@angular/material/select';
     Cloud9Component,
     CatalogoComponent,
     C9HomeComponent,
+    PagosComponent,
+    FlavorDialogComponent,
   ],
   exports: [
     Cloud9Component,
     CatalogoComponent,
     C9HomeComponent,
+    PagosComponent,
   ],
   imports: [
     BrowserModule,
@@ -39,6 +45,7 @@ import { MatSelectModule } from '@angular/material/select';
     MatButtonModule,
     MatFormFieldModule,
     MatSelectModule,
+    MatDialogModule,
 
     Cloud9RoutingModule,
   ]
