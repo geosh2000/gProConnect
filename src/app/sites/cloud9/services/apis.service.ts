@@ -5,7 +5,7 @@ import { Injectable } from '@angular/core';
 })
 export class ApisService {
 
-  // URL del archivo CSV en línea 
+  // URL del archivo CSV en línea
   csvURL = 'https://docs.google.com/spreadsheets/d/1H8O3raaIIt_mYp6GwzQFVRBYVyhWHAlSuRzB63LAmeE/gviz/tq?tqx=out:csv&gid=1192024511';
 
   jsonData =  [];
@@ -15,7 +15,9 @@ export class ApisService {
   // Función para descargar y procesar el CSV
   async fetchAndParseCSV() {
     try {
-        const response = await fetch(this.csvURL);
+        const response = await fetch(this.csvURL, {
+          cache: 'no-cache' // Agrega esta opción para evitar el caché
+        });
         if (!response.ok) {
             throw new Error(`Error al cargar el CSV: ${response.statusText}`);
         }
@@ -49,18 +51,18 @@ export class ApisService {
         console.error('Error:', error);
     }
   }
-  
+
    buildData( data ){
-  
+
     for (var i = 1; i < data.length; i++) {
-  
+
         var row = data[i];
-  
+
         if(row["\"Producto\""] == "\"\""){
             break;
         }
-  
-        
+
+
         var rowData = {
             "Producto": row["\"Producto\""].substring(1, row["\"Producto\""].length - 1),
             "Inventario": row["\"Inventario\""].substring(1, row["\"Inventario\""].length - 1),
@@ -76,18 +78,18 @@ export class ApisService {
             "LinkAirb": row["\"LinkAirb\""].substring(1, row["\"LinkAirb\""].length - 1),
             "ClipSrc": row["\"ClipSrc\""].substring(1, row["\"ClipSrc\""].length - 1),
         }
-        
+
         if( this.categorize(rowData, this.jsonData) === true ){
             this.jsonData[rowData['Modelo']]['Sabor'].push({"Sabor": rowData['Sabor'], "Inventario": parseInt(rowData['Inventario'])});
         }
-        
+
     }
-  
+
     return this.jsonData;
   }
-  
+
   categorize( data, jsonData ){
-  
+
       if( jsonData[data["Modelo"]] ){
           return true;
       }else{
@@ -95,7 +97,7 @@ export class ApisService {
           jsonData[data["Modelo"]]['Sabor'] = [{"Sabor": data['Sabor'], "Inventario": parseInt(data['Inventario'])}];
           delete jsonData[data["Modelo"]]['Inventario'];
       }
-  
+
       return jsonData;
   }
 }
