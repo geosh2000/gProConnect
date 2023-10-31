@@ -1,11 +1,6 @@
 {
-    "/oasishoteles/api/rf": {
-        "target": "https://geoshglobal.com",
-        "secure": false,
-        "changeOrigin": true
-    },
-    "/api/rf": {
-        "target": "https://geoshglobal.com",
+    "/api.geoshglobal.com/crezlop": {
+        "target": "http://localost:8080/crezlopApi",
         "secure": false,
         "changeOrigin": true
     },
